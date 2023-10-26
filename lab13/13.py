@@ -4,9 +4,6 @@ from bs4 import BeautifulSoup
 # open a connection to a URL using urllib
 webUrl  = urllib.request.urlopen('https://py4e-data.dr-chuck.net/comments_1430669.html')
 
-#get the result code and print it
-print ("result code: " + str(webUrl.getcode()))
-
 # read the data from the URL and print it
 data = webUrl.read()
 soup = BeautifulSoup(data, 'html.parser')
