@@ -1,4 +1,4 @@
 from employee import Employee
 
-class Manger(Employee):
+class Manager(Employee):
   pass
