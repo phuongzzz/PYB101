@@ -1,17 +1,16 @@
 class Pokemon(object):
-  attack = 12
-  defense = 10
-  health = 15
-  p_type = "Normal"
-
-  health_boost = 0
-  attack_boost = 0
-  defense_boost = 0
-  evolve = 0
-
+  
   def __init__(self, name, level = 5):
     self.name = name
     self.level = level
+    self.attack = 12
+    self.defense = 10
+    self.health = 15
+    self.p_type = "Normal"
+    self.health_boost = 0
+    self.attack_boost = 0
+    self.defense_boost = 0
+    self.evolve = 0
 
   def train(self):
     self.update()

@@ -12,10 +12,3 @@ for comment in root.find('comments').findall('comment'):
   sum += int(count)
 
 print("sum =", sum)
-
-
-
-
-# for article in root.findall("PubmedArticle"):
-#     article_title = article.find("MedlineCitation").find("Article").find("ArticleTitle")
-#     print(article_title.text)

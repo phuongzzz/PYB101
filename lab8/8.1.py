@@ -1,4 +1,5 @@
 import statistics
+
 def main():
   inputString = input("Nhap chuoi chieu cao = ")
   splitedStrings = inputString.split(sep=" ")
