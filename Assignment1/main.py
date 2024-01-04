@@ -16,22 +16,22 @@ def main():
   yC = int(input("Nhap yC: "))
   pointC = Point(xC, yC)
 
-  AB = utils.calculateDistance(pointA, pointB)
-  AC = utils.calculateDistance(pointA, pointC)
-  BC = utils.calculateDistance(pointB, pointC)
+  AB = utils.khoangcach(pointA, pointB)
+  AC = utils.khoangcach(pointA, pointC)
+  BC = utils.khoangcach(pointB, pointC)
 
   print(f"Do dai AB: { AB }")
   print(f"Do dai AC: { AC }")
   print(f"Do dai BC: { BC }")
 
-  # check co phai tam giac hay khong?
-  if utils.checkIsTriangle(AB, AC, BC):
+  # kiểm tra có phải tam giác hay không?
+  if utils.kiemtra_tamgiac(AB, AC, BC):
     print("Day la tam giac")
   else:
     print("Day khong phai tam giac")
     return
 
-  # tinh goc giua vector
+  # Tính góc giữa 2 vector
   vBA = utils.calculateVector(pointB, pointA)
   vAC = utils.calculateVector(pointA, pointC)
 
@@ -45,17 +45,20 @@ def main():
   print(f"goc ABC: { utils.goc(vBA, vBC) }")
   print(f"goc ACB: { utils.goc(vCA, vCB) }")
 
-  # check loai tam giac
-  print(utils.typeTriangle(pointA, pointB, pointC))
+  # Kiểm tra loại của tam giác (vuông, nhọn,...)
+  print(utils.loai_tamgiac(pointA, pointB, pointC))
 
-  # tinh dien tich tam giac
-  print(f"dien tich tam giac: {utils.areaOfTriangle(pointA, pointB, pointC)}")
+  # Tính và in ra diện tích tam giác
+  print(f"dien tich tam giac: {utils.dientich_tamgiac(pointA, pointB, pointC)}")
 
-  # do dai cac duong trung tuyen
-  utils.altitudeOfTriangle(pointA, pointB, pointC)
+  # Tính và in ra các đường cao của tam giác
+  print(f"duong cao tam giac: {utils.duongcao_tamgiac(pointA, pointB, pointC)}") 
 
-  # Toa do trong tam
-  print(f"trong tam tam giac: { utils.medianPointOfTriangle(pointA, pointB, pointC) }")
+  # Tính và in ra các đường trung tuyến của tamgiacs
+  utils.trungtuyen_tamgiac(pointA, pointB, pointC)
+
+  # In ra toạ độ trọng tâm của tam giác
+  print(f"trong tam tam giac: { utils.trongtam_tamgiac(pointA, pointB, pointC) }")
 
 if __name__ == '__main__':
   main()
