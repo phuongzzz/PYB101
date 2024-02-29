@@ -419,13 +419,31 @@ class EmployeeManager:
         if departmentId == "-1":
           break
         else:
-          results = [d for d in EmployeeManager.list_departments if d.id.replace(" ", "").lower() != departmentId]
-          EmployeeManager.list_departments = results
-          print("da xoa phong ban ", departmentId)
+          isDeletedDepartmentSuccess = False
+          for department in EmployeeManager.list_departments.copy():
+            if department.id == departmentId and not(self.isDepartmentContainsEmployee(departmentId)):
+              EmployeeManager.list_departments.remove(department)
+              self.saveChangesToFile()
+              isDeletedDepartmentSuccess = True 
+              break
+          
+          if isDeletedDepartmentSuccess:
+            print(f"da xoa phong ban { departmentId }")
+          else:
+            print("Khong the xoa phong ban (phong ban khong ton tai hoac phong ban dang co nhan vien!)")
+              
           break
     
     for d in EmployeeManager.list_departments:
       print(d.id)
+      
+  def isDepartmentContainsEmployee(self, departmentId):
+    for e in EmployeeManager.list_employees:
+      if e.department == departmentId:
+        return True
+      else:
+        continue
+    return False
 
   def displaySalaryTable(self):
     for e in EmployeeManager.list_employees:

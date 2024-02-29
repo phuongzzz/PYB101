@@ -4,7 +4,6 @@ import urllib.request
 import xml.etree.ElementTree as ET
 from tax import Tax
 from late import Late
-import employee_manager
 
 class Employee:
 
@@ -67,11 +66,14 @@ class Employee:
       Employee.list_lates.append(lateObject)
 
   def tinhLuong(self):
+
+    from employee_manager import EmployeeManager
+    
     # tổng thu nhập chưa thưởng = (salary_base * working_days) * working_performance
     tong_thu_nhap_chua_thuong = (self.salary_base * self.working_days) * self.working_performance
 
     # Thưởng bộ phận, được lấy từ các Class Department. Chú ý: các quản lý sẽ được thưởng thêm 10% thưởng bộ phận
-    department = next(d for d in employee_manager.EmployeeManager.list_departments if d.id == self.department )
+    department = next(d for d in EmployeeManager.list_departments if d.id == self.department )
 
     thuong_bo_phan = department.bonus_salary
 
